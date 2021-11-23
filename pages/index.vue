@@ -9,7 +9,7 @@
     </header>
 
     <v-card
-      class="d-flex mx-auto header"
+      class="mx-auto d-flex header"
       outlined
       tile
     >
@@ -66,9 +66,8 @@
           </template>
 
           <template v-slot:default="dialog" >
-              <v-card>
                   <v-toolbar
-                      class="d-flex justify-center"
+                      class="justify-center d-flex"
                   >Info</v-toolbar>
                   <v-card-text >
                       <div class="ma-4">Number of lists: {{lists.length}}</div>
@@ -80,10 +79,10 @@
                           @click="dialog.value = false"
                       >Close</v-btn>
                   </v-card-actions>
-              </v-card>
           </template>
       </v-dialog>
     </v-app>
+
     <v-footer
       dark
       padless
@@ -92,9 +91,9 @@
       <v-card
         flat
         tile
-        class="indigo lighten-1 white--text text-center"
+        class="text-center indigo lighten-1 white--text"
       >
-        <v-card-text class="white--text pt-0">
+        <v-card-text class="pt-0 white--text">
           This app allows you to create a list of tasks and delete them.
           This app is developed using Nuxt.js, Vuetify and Vuex.
         </v-card-text>
@@ -147,6 +146,8 @@ export default {
   display: grid;
   place-items: center;
   width: 100%;
+  height: auto;
+  position: relative;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   header {
     h1 {
@@ -190,7 +191,8 @@ export default {
   }
   .footer {
     width: 100%;
-    position: absolute; 
+    position: fixed;
+    z-index: 2;
     bottom: 0;
     .footer-a{
       color: white;
