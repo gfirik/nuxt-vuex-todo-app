@@ -3,11 +3,17 @@
     fluid 
     class="container"
   >
+
+    <header>
+      <h1>Todo App</h1>
+    </header>
+
     <v-card
       class="d-flex mx-auto header"
       outlined
       tile
     >
+      
       <v-text-field
         single-line
         solo
@@ -107,6 +113,15 @@ export default {
   display: grid;
   place-items: center;
   width: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  header {
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 2rem auto;
+    }
+  }
   .header {
     width: 50%;
     margin: auto;
