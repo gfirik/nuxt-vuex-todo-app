@@ -27,10 +27,10 @@
       <v-btn
         elevation="4"
         fab
-        tile
         icon
         @click="add"
-      ><v-icon>mdi-plus</v-icon>
+        color="rgb(44, 44, 90)"
+      ><v-icon class="add">mdi-plus</v-icon>
       </v-btn>
     </v-card>
 
@@ -45,7 +45,7 @@
         <v-list-item-content >
           {{ list }}
         </v-list-item-content>
-        <v-btn @click="remove(index)">
+        <v-btn @click="remove(index)" icon class="delete">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-list-item>
@@ -68,7 +68,6 @@
           <template v-slot:default="dialog" >
               <v-card>
                   <v-toolbar
-                      color="accent"
                       class="d-flex justify-center"
                   >Info</v-toolbar>
                   <v-card-text >
@@ -85,25 +84,60 @@
           </template>
       </v-dialog>
     </v-app>
+    <v-footer
+      dark
+      padless
+      class="footer"
+    >
+      <v-card
+        flat
+        tile
+        class="indigo lighten-1 white--text text-center"
+      >
+        <v-card-text class="white--text pt-0">
+          This app allows you to create a list of tasks and delete them.
+          This app is developed using Nuxt.js, Vuetify and Vuex.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text class="white--text">
+          {{ new Date().getFullYear() }} &copy;
+          <strong>
+            <a 
+              href="https://github.com/gfirik/nuxt-vuex-todo-app"
+              class="footer-a"
+            >gfirik</a>
+          </strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-container>
 </template>
 <script>
 export default {
+  computed: {
+    lists () {
+      return this.$store.state.lists
+    }
+  },
   data() {
     return {
-      lists: [],
       list: '',
       dialog: false,
+      icons: [
+        'mdi-github',
+      ],
     }
   },
   methods: {
     add(item){
       if(this.list === '') return;  
-      this.lists.push(this.list);
+      this.$store.commit('addList', this.list)
       this.list = '';
     },
     remove(index){
-      this.lists.splice(index, 1)
+      this.$store.commit('removeList', index)
     },
   }
 }
@@ -148,7 +182,21 @@ export default {
         cursor: pointer;
         box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
       }
+      .delete {
+        transition: all .3s ease-in-out;
+        color: #f44336;
+      }
     }
   }
+  .footer {
+    width: 100%;
+    position: absolute; 
+    bottom: 0;
+    .footer-a{
+      color: white;
+      text-decoration: none;
+    }
+  }
+  
 }
 </style>
