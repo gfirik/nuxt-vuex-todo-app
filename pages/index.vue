@@ -160,6 +160,7 @@ export default {
   .dialog {
     background-color: white;
     color: #444;
+    border-radius: 10px;
   }
   .dialog-container {
     margin: 4rem auto;
