@@ -70,7 +70,7 @@
                   <v-card-actions class="justify-end">
                       <v-btn
                           text
-                          color="white"
+                          color="rgb(44, 44, 90)"
                           @click="dialog.value = false"
                       >Close</v-btn>
                   </v-card-actions>
@@ -159,17 +159,13 @@ export default {
   }
   .dialog {
     background-color: white;
-    color: #000;
+    color: #444;
   }
   .dialog-container {
     margin: 4rem auto;
-    height: 4rem;
-    background: white;
-  }
-  .dialog-text-area {
-    background: white;
-    color: black;
-    height: 100%;
+    max-height: 1rem;
+    background: #fff;
+    color: #000;
   }
   .lists {
     width: 50%;
