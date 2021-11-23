@@ -170,6 +170,7 @@ export default {
   .dialog-text-area {
     background: white;
     color: black;
+    height: 100%;
   }
   .lists {
     width: 50%;
