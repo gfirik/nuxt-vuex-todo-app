@@ -3,17 +3,14 @@
     fluid 
     class="container"
   >
-
     <header>
       <h1>Todo App</h1>
     </header>
-
     <v-card
       class="mx-auto d-flex header"
       outlined
       tile
     >
-      
       <v-text-field
         single-line
         solo
@@ -33,7 +30,6 @@
       ><v-icon class="add">mdi-plus</v-icon>
       </v-btn>
     </v-card>
-
     <v-card
       class="mx-auto lists"
     >
@@ -50,12 +46,12 @@
         </v-btn>
       </v-list-item>
     </v-card>
-    
     <v-app class="dialog-container">  
       <v-dialog
           transition="dialog-top-transition"
           max-width="600px"
           max-height="600px"
+          class="dialog"
       >
           <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -64,8 +60,7 @@
                   light
               >info</v-btn>
           </template>
-
-          <template v-slot:default="dialog" >
+          <template v-slot:default="dialog" class="dialog-text-area">
                   <v-toolbar
                       class="justify-center d-flex"
                   >Info</v-toolbar>
@@ -162,6 +157,10 @@ export default {
     margin: auto;
     display: flex;
   }
+  .dialog {
+    background-color: white;
+    color: #000;
+  }
   .dialog-container {
     margin: 4rem auto;
     height: 4rem;
@@ -192,6 +191,9 @@ export default {
   }
   .footer {
     width: 100%;
+    height: 10rem;
+    display: grid;
+    place-items: center;
     position: fixed;
     z-index: 2;
     bottom: 0;
